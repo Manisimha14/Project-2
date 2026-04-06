@@ -10,6 +10,8 @@ import { RouterProvider } from 'react-router'
 import ProductDetail from './components/ProductDetail'
 import Wishlist from './components/Wishlist'
 import Checkout from './components/Checkout'
+import Admin from './components/Admin'
+import AdminGate from './components/AdminGate'
 
 
 function App() {
@@ -22,6 +24,9 @@ function App() {
     <Route path='cart' element={<Cart />} />
     <Route path='wishlist' element={<Wishlist />} />
     <Route path='checkout' element={<Checkout />} />
+    <Route path='/admin' element={<Admin />} />
+    
+    <Route path='admingate' element={<AdminGate />} />
     
 
 
@@ -29,6 +34,7 @@ function App() {
 
 
    </Route>
+   
     
 
    )

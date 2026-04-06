@@ -51,6 +51,9 @@ function Products() {
           <option value="all">All</option>
           <option value="beauty">Beauty</option>
           <option value="electronics">Electronics</option>
+          <option value="accessories">accessories</option>
+          <option value="home">Home</option>
+           <option value="clothing">Clothing</option>
         </select>
 
         <select onChange={(e) => setSort(e.target.value)} className="border px-4 py-2 rounded-xl">

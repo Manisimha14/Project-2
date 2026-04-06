@@ -2,6 +2,9 @@ import React from 'react'
 import Productscontext from './products'
 import axios from 'axios'
 import { useState,useEffect } from 'react'
+import { collection,getDocs } from 'firebase/firestore'
+import {db} from "../database/firebase"
+
 
 function ProductProvider({children}) {
    const [products,setProducts]=useState([])
@@ -19,14 +22,23 @@ function ProductProvider({children}) {
     return stored ? JSON.parse(stored) : []
   })
 
-   const getProducts=async ()=>{
+  const getProducts = async () => {
     try {
-        const response= await axios.get('https://dummyjson.com/products')
-        setProducts(response.data.products)
+      const querySnapshot = await getDocs(collection(db, "products"))
+      
+      
+  
+      const productsData = querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+  
+      setProducts(productsData)
+  
     } catch (error) {
-        console.log(error);
+      console.log(error)
     }
-   }
+  }
 
    useEffect(() => {
         getProducts()
